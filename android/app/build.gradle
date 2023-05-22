@@ -16,8 +16,8 @@ android {
 
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 22100
-        versionName "2.2.10"
+        versionCode 22110
+        versionName "2.2.11"
         externalNativeBuild {
             ndkBuild {
                 arguments "APP_PLATFORM=android-16"
@@ -35,7 +35,7 @@ android {
         }
         applicationVariants.all { variant ->
             if (variant.getFlavorName() == 'gameNoAssets') {
-                variant.mergeAssets.doLast {
+                variant.mergeAssetsProvider.get().doLast {
                     println("Removing game assets from the application package")
                     delete(fileTree(
                         dir: outputDir,
@@ -44,7 +44,8 @@ android {
                             'zones.pk3',
                             'player.dta',
                             'patch.pk3', 'patch_music.pk3',
-                            'music.dta']
+                            'music.dta',
+                            'modelpacks/default.zip']
                     ))
                 }
             }
@@ -53,7 +54,7 @@ android {
             useBuildDate = false
         }
 
-        // Lactozilla: This formats the application package's name.
+        // This generates the APK filename
         def srb2PackageName = "srb2-android"
 
         // Game version string
@@ -84,7 +85,7 @@ android {
         }
     }
 
-    // Lactozilla: This task executes the comptime script.
+    // This task executes the comptime script
     task generateCompTime(type: Exec) {
         def comptimeScript = 'comptime'
 

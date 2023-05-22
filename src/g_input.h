@@ -1,7 +1,7 @@
 // SONIC ROBO BLAST 2
 //-----------------------------------------------------------------------------
 // Copyright (C) 1998-2000 by DooM Legacy Team.
-// Copyright (C) 1999-2022 by Sonic Team Junior.
+// Copyright (C) 1999-2023 by Sonic Team Junior.
 //
 // This program is free software distributed under the
 // terms of the GNU General Public License, version 2.
@@ -178,7 +178,8 @@ typedef enum
 	GC_SYSTEMMENU,
 	GC_SCREENSHOT,
 	GC_RECORDGIF,
-	GC_VIEWPOINT,
+	GC_VIEWPOINTNEXT,
+	GC_VIEWPOINTPREV,
 	GC_CUSTOM1, // Lua scriptable
 	GC_CUSTOM2, // Lua scriptable
 	GC_CUSTOM3, // Lua scriptable
@@ -276,7 +277,7 @@ void G_ResetMice(void);
 
 boolean G_HandlePauseKey(boolean ispausebreak);
 boolean G_CanRetryModeAttack(void);
-boolean G_DoViewpointSwitch(void);
+boolean G_DoViewpointSwitch(INT32 direction);
 boolean G_ToggleChaseCam(void);
 boolean G_ToggleChaseCam2(void);
 

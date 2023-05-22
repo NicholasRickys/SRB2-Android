@@ -1,6 +1,6 @@
 // SONIC ROBO BLAST 2
 //-----------------------------------------------------------------------------
-// Copyright (C) 2020-2022 by Jaime Ita Passos.
+// Copyright (C) 2020-2023 by SRB2 Mobile Project.
 //
 // This program is free software distributed under the
 // terms of the GNU General Public License, version 2.
@@ -2761,7 +2761,8 @@ struct {
 	{"Screenshot",           GC_SCREENSHOT},
 	{"Toggle GIF Recording", GC_RECORDGIF},
 	{"Open/Close Menu",      GC_SYSTEMMENU},
-	{"Change Viewpoint",     GC_VIEWPOINT},
+	{"Next Viewpoint",       GC_VIEWPOINTNEXT},
+	{"Prev Viewpoint",       GC_VIEWPOINTPREV},
 	{"Talk",                 GC_TALKKEY},
 	{"Talk (Team only)",     GC_TEAMKEY},
 	{"Fire",                 GC_FIRE},

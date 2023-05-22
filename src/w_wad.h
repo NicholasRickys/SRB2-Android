@@ -2,7 +2,7 @@
 //-----------------------------------------------------------------------------
 // Copyright (C) 1993-1996 by id Software, Inc.
 // Copyright (C) 1998-2000 by DooM Legacy Team.
-// Copyright (C) 1999-2022 by Sonic Team Junior.
+// Copyright (C) 1999-2023 by Sonic Team Junior.
 //
 // This program is free software distributed under the
 // terms of the GNU General Public License, version 2.
@@ -69,6 +69,7 @@ typedef struct
 	unsigned long position; // filelump_t filepos
 	unsigned long disksize; // filelump_t size
 	char name[9];           // filelump_t name[] e.g. "LongEntr"
+	UINT32 hash;
 	char *longname;         //                   e.g. "LongEntryName"
 	char *fullname;         //                   e.g. "Folder/Subfolder/LongEntryName.extension"
 	char *diskpath;         // path to the file  e.g. "/usr/games/srb2/Addon/Folder/Subfolder/LongEntryName.extension"
@@ -164,6 +165,12 @@ UINT16 W_InitFile(const char *filename, fhandletype_t handletype, boolean mainfi
 // Adds a folder as a file
 UINT16 W_InitFolder(const char *path, boolean mainfile, boolean startup);
 
+// Loads a wadfile, but doesn't add it to the active wad files.
+wadfile_t *W_LoadResourceFile(const char *filename, fhandletype_t handletype);
+
+// Deletes a wadfile.
+void W_DeleteResourceFile(wadfile_t *wad);
+
 // W_InitMultipleFiles exits if a file was not found, but not if all is okay.
 void W_InitMultipleFiles(addfilelist_t *list, fhandletype_t handletype);
 
@@ -210,6 +217,13 @@ void Command_Unpacktest_f(void);
 #endif
 
 #endif
+
+UINT16 Resource_CheckNumForName(wadfile_t *wad, const char *name);
+void *Resource_CacheLumpNum(wadfile_t *wad, UINT16 lump, INT32 tag);
+void *Resource_CacheLumpName(wadfile_t *wad, const char *name, INT32 tag);
+boolean Resource_LumpExists(wadfile_t *wad, const char *name);
+size_t Resource_LumpLength(wadfile_t *wad, UINT16 lump);
+size_t Resource_ReadLumpHeader(wadfile_t *wad, UINT16 lump, void *dest, size_t size, size_t offset);
 
 const char *W_CheckNameForNumPwad(UINT16 wad, UINT16 lump);
 const char *W_CheckNameForNum(lumpnum_t lumpnum);

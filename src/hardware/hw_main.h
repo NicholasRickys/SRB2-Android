@@ -1,7 +1,7 @@
 // SONIC ROBO BLAST 2
 //-----------------------------------------------------------------------------
 // Copyright (C) 1998-2000 by DooM Legacy Team.
-// Copyright (C) 1999-2022 by Sonic Team Junior.
+// Copyright (C) 1999-2023 by Sonic Team Junior.
 //
 // This program is free software distributed under the
 // terms of the GNU General Public License, version 2.
@@ -95,11 +95,15 @@ extern consvar_t cv_glcoronas;
 extern consvar_t cv_glcoronasize;
 #endif
 
+extern consvar_t cv_modelpack;
+
 extern consvar_t cv_glshaders, cv_glallowshaders;
 extern consvar_t cv_glmodels;
 extern consvar_t cv_glmodelinterpolation;
 extern consvar_t cv_glmodellighting;
+#ifdef HAVE_GL_FRAMEBUFFER
 extern consvar_t cv_glframebuffer, cv_glrenderbufferdepth;
+#endif
 extern consvar_t cv_glfiltermode;
 extern consvar_t cv_glanisotropicmode;
 extern consvar_t cv_fovchange;

@@ -2,7 +2,7 @@
 //-----------------------------------------------------------------------------
 // Copyright (C) 1993-1996 by id Software, Inc.
 // Copyright (C) 1998-2000 by DooM Legacy Team.
-// Copyright (C) 1999-2022 by Sonic Team Junior.
+// Copyright (C) 1999-2023 by Sonic Team Junior.
 //
 // This program is free software distributed under the
 // terms of the GNU General Public License, version 2.
@@ -66,6 +66,8 @@ void FIL_DefaultExtension (char *path, const char *extension);
 void FIL_ForceExtension(char *path, const char *extension);
 boolean FIL_CheckExtension(const char *in);
 
+char *M_FindFile(const char *filename);
+
 #ifdef HAVE_PNG
 boolean M_SavePNG(const char *filename, void *data, int width, int height, const UINT8 *palette);
 #endif
@@ -86,17 +88,6 @@ void M_SaveConfig(const char *filename);
 INT32 axtoi(const char *hexStg);
 
 const char *GetRevisionString(void);
-
-// Vector/matrix math
-typedef fixed_t TVector[4];
-typedef fixed_t TMatrix[4][4];
-
-TVector *VectorMatrixMultiply(TVector v, TMatrix m);
-TMatrix *RotateXMatrix(angle_t rad);
-#if 0
-TMatrix *RotateYMatrix(angle_t rad);
-#endif
-TMatrix *RotateZMatrix(angle_t rad);
 
 // s1 = s2+s3+s1 (1024 lenghtmax)
 void strcatbf(char *s1, const char *s2, const char *s3);

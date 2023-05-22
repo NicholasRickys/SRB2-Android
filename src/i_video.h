@@ -2,7 +2,7 @@
 //-----------------------------------------------------------------------------
 // Copyright (C) 1993-1996 by id Software, Inc.
 // Copyright (C) 1998-2000 by DooM Legacy Team.
-// Copyright (C) 1999-2022 by Sonic Team Junior.
+// Copyright (C) 1999-2023 by Sonic Team Junior.
 //
 // This program is free software distributed under the
 // terms of the GNU General Public License, version 2.
@@ -95,14 +95,6 @@ void VID_GetNativeResolution(INT32 *width, INT32 *height);
 */
 INT32 VID_CheckRenderer(void);
 
-/**	\brief Blits a region of the current framebuffer surface into the texture (does not present it.)
-*/
-void VID_BlitSurfaceRegion(INT32 x, INT32 y, INT32 w, INT32 h);
-
-/**	\brief Load OpenGL mode
-*/
-void VID_StartupOpenGL(void);
-
 /**	\brief Checks if OpenGL successfully loaded
 */
 void VID_CheckGLLoaded(rendermode_t oldrender);
@@ -132,10 +124,6 @@ void I_UpdateNoBlit(void);
 /**	\brief Update video system with updating frame
 */
 void I_FinishUpdate(void);
-
-/**	\brief I_FinishUpdate(), but checks the rendering context
-*/
-void I_OnLoopFinishUpdate(void);
 
 /**	\brief I_FinishUpdate(), but vsync disabled
 */
@@ -169,8 +157,18 @@ void I_BeginRead(void);
 */
 void I_EndRead(void);
 
+/**	\brief Show the splash screen
+*/
+void I_ShowSplashScreen(void);
+
+/**	\brief Hide the splash screen
+*/
+void I_HideSplashScreen(void);
+
 /**	\brief Report visual progress for some long operation
 */
 void I_ReportProgress(int progress);
+
+UINT32 I_GetRefreshRate(void);
 
 #endif
